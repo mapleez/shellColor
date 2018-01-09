@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Editor : ez
+# Date : 2018/1/9
+# CHANGE : Add some comments.
+
 ## bash script with color in terminal
 # echo -e \033[style;colorm : with style
 # echo -e \033[colorm       : without style
