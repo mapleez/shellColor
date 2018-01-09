@@ -21,13 +21,21 @@
 #  7 white
 #  9 reset
 
+# The format of one color row (2 lines) : 
+# Assume the BACK_COLOR code is x
+#
+# BACK_COLOR : \033[4xm\033[3*m\033[39;49m
+#            : \033[1;4xm\033[3*m\033[0;39;49m
+#
+
 
 colors=( "blk" "red" "grn" "yel" "blu" "mag" "cyn" "wht" )
+color_num=${#colors[@]}
 
 ## Print table
 # Each row will have two lines : Normal and Bold style, and will represent a background colors
 # Each column is a foreground color
-for (( row = -1; row < 8; row++ )); do
+for (( row = -1; row < $color_num; row++ )); do
     # Start line
     if [ $row -eq -1 ]; then
         # Start default line (line -1)
@@ -46,7 +54,7 @@ for (( row = -1; row < 8; row++ )); do
     fi
 
     # Fill lines's columns
-    for (( color = 0; color < 8; color++ )); do
+    for (( color = 0; color < $color_num; color++ )); do
         # Compose column with color name with right color
         column="  \033[3${color}m${colors[color]}  "
         line1+=$column;
